@@ -1,0 +1,29 @@
+cd ~/rf2o_ws
+ros2 run rf2o_laser_odometry rf2o_laser_odometry_node --ros-args \
+  -p laser_scan_topic:=/scan \
+  -p odom_topic:=/odom \
+  -p base_frame_id:=base_footprint \
+  -p odom_frame_id:=odom \
+  -p publish_tf:=true \
+  -p freq:=10.0
+
+ahmed@ahmed:~$ ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 base_footprint laser
+
+
+ahmed@ahmed:~/projects/autonomous_rover$ ros2 launch sllidar_ros2 sllidar_a1_launch.py serial_port:=/dev/ttyUSB0 serial_baudrate:=115200
+
+ahmed@ahmed:~/E_Disk/arabian_ros/ws/intern_ws$ ros2 launch localization_mapping online_sync_launch.py 
+
+ahmed@ahmed:~/E_Disk/arabian_ros/ws/intern_ws$ ros2 launch arabian_robot arabian.launch.py 
+
+ahmed@ahmed:~/rf2o_ws$ ros2 run rf2o_laser_odometry rf2o_laser_odometry_node --ros-args   -p laser_scan_topic:=/scan   -p odom_topic:=/odom   -p base_frame_id:=base_footprint   -p odom_frame_id:=odom   -p publish_tf:=true   -p freq:=10.0
+
+http://192.168.1.20:6080/vnc.html
+
+http://192.168.1.20:6080/vnc.html?resize=scale&autoconnect=true&view_only=true
+
+x11vnc -id WINDOW_ID -nopw -forever -shared -viewonly
+
+websockify --web=/usr/share/novnc/ 6080 localhost:5900
+
+xwininfo
