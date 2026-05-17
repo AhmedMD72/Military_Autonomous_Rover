@@ -1,0 +1,612 @@
+
+   :root {
+    --bg-color: #0F1717;
+    --card-bg: #142220; 
+    --accent-teal: #00A890;
+    --text-main: #ffffff;
+    --text-dim: #9aa4a6;
+    --border-color: #3f5656; 
+    --btn-blue-bg: #154560;
+    --btn-blue-border: #1c5b80;
+    --btn-red-bg: #4a2422;
+    --btn-red-border: #6b3330;
+    --alarm-bg: #2a1f1e;
+    --alarm-text: #d97777;
+    --alarm-border: #4a3030;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+   
+}
+
+/* Top Navigation Container */
+.top-nav {
+    width: 100%; /* Or keep 90% depending on your main wrapper */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically centers everything */
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+/* Flex 1 trick keeps the center element perfectly in the middle */
+.nav-left, .status {
+    flex: 1; 
+    display: flex;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.status {
+    justify-content: flex-end; /* Pushes the dot to the far right */
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+}
+
+.brand {
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* Back Button Styles */
+.back-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    opacity: 0.6; /* Dims the button slightly */
+    transition: opacity 0.2s ease;
+    padding: 0;
+}
+
+.back-btn:hover {
+    opacity: 1; /* Brightens on hover */
+}
+
+/* Brand & Logo Styles */
+.brand-logo {
+    height: 24px; 
+    width: auto; 
+    display: block;
+}
+
+.brand span {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+}
+
+/* Status Indicator */
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-teal);
+}
+
+.main {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 
+   Navbar
+*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-left .back-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-left .back-btn:hover {
+    color: var(--text-main);
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-center h1 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Made the logo significantly larger */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-teal);
+}
+
+/* ==========================================================================
+   Main Grid Layout
+   ========================================================================== */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px; /* Slightly wider right panel for bigger text */
+    gap: 20px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Reusable teal corner brackets */
+.panel {
+    position: relative;
+}
+
+/* Made the corner brackets slightly thicker (2px) */
+.panel::before, .panel::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--accent-teal); 
+    pointer-events: none;
+}
+
+.camera-panel::before, .manual-drive::before, .ai-models::before {
+    top: -1px; left: -1px;
+    border-right: none; border-bottom: none;
+}
+
+.camera-panel::after, .manual-drive::after, .ai-models::after {
+    bottom: -1px; right: -1px;
+    border-left: none; border-top: none;
+}
+
+
+/* ==========================================================================
+   Camera Feed Section
+   ========================================================================== */
+.camera-panel {
+    background-color: #000;
+    border: 1px solid var(--border-color);
+    height: 400px;
+    width: 100%;
+}
+
+.camera-feed {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.camera-overlay {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: right;
+}
+
+.telemetry-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.telemetry-item .label {
+    color: var(--accent-teal);
+    opacity: 0.7;
+}
+
+.telemetry-item .value {
+    color: var(--accent-teal);
+}
+
+.rec-indicator {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ff3333;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.rec-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ff3333;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ==========================================================================
+   Control Panels (Bottom Left)
+   ========================================================================== */
+.control-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.manual-drive, .ai-models {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color); 
+    padding: 25px; 
+    display: flex;
+    flex-direction: column;
+}
+
+
+.manual-header, .ai-header, .section-header {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.manual-header h2, .ai-header h2, .section-header h2 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Manual Drive Content */
+.manual-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-grow: 1;
+}
+.joystick-outer {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a2a2a 0%, #050a0a 100%);
+    border: 2px solid #1e3333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+.joystick-inner {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    position: relative;
+    border: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+.joystick-container {
+    width: 120px;
+    height: 120px;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystick .arrow {
+    position: absolute;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.joystick .up { top: 12px; left: 50%; transform: translateX(-50%); }
+.joystick .down { bottom: 12px; left: 50%; transform: translateX(-50%); }
+.joystick .left { left: 12px; top: 50%; transform: translateY(-50%); }
+.joystick .right { right: 12px; top: 50%; transform: translateY(-50%); }
+
+.center-circle {
+    width: 18px;
+    height: 18px;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.motor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.start-btn, .stop-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 4px;
+    font-family: inherit;
+    color: var(--text-main);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.start-btn:hover, .stop-btn:hover {
+    filter: brightness(1.2);
+}
+
+.start-btn {
+    background-color: var(--btn-blue-bg);
+    border: 1px solid var(--btn-blue-border);
+}
+
+.stop-btn {
+    background-color: var(--btn-red-bg);
+    border: 1px solid var(--btn-red-border);
+}
+
+/* AI Models Content */
+.ai-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.ai-card {
+    
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 18px 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px; /* Increased font size */
+    font-weight: 600;
+}
+
+.ai-icon img {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* ==========================================================================
+   Right Panel (Live Telemetry)
+   ========================================================================== */
+.telemetry-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.telemetry-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 18px 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.telemetry-card h3 {
+    font-size: 11px; /* Increased font size */
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.telemetry-card p {
+    font-size: 20px; /* Increased font size */
+    color: var(--text-dim);
+    font-weight: 700;
+}
+
+.telemetry-icon {
+    width: 24px; /* Increased icon size */
+    height: 24px;
+}
+
+/* Info Boxes (Gyro, GPS) */
+.info-box {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 18px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.info-box p {
+    font-size: 13px; /* Increased font size */
+    color: var(--text-dim);
+    font-family: monospace; 
+}
+
+/* Battery Box */
+.battery-box {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 18px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.battery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.battery-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.battery-percent {
+    font-size: 14px; /* Increased font size */
+    font-weight: 600;
+}
+
+.battery-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.battery-fill {
+    width: 60%;
+    height: 100%;
+    background-color: var(--accent-teal);
+    border-radius: 4px;
+}
+
+/* Warning Box (Obstacle Alarm) */
+.warning-box {
+    background-color: var(--alarm-bg);
+    border: 1px solid var(--alarm-border);
+    padding: 18px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.warning-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--alarm-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.warning-box p {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+.warning-bars {
+    display: flex;
+    gap: 6px;
+}
+
+.warning-bars span {
+    flex: 1;
+    height: 6px;
+    background-color: var(--alarm-text);
+    border-radius: 3px;
+    opacity: 0.3;
+}
+
+/* Make the first three bars "active" like in the image */
+.warning-bars span:nth-child(1),
+.warning-bars span:nth-child(2),
+.warning-bars span:nth-child(3) {
+    opacity: 1;
+}

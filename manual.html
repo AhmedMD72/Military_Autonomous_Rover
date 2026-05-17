@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROVEX 1.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="manual1.css">
+
+</head>
+
+<body>
+
+<div class="main">
+
+<!-------------- NAVBAR ------------------->
+<nav class="top-nav">
+    <div class="nav-left">
+        <button class="back-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Mode Selection
+        </button>
+    </div>
+
+    <div class="brand">
+        <img src="image/Vector.png" class="brand-logo" alt="Logo">
+        <span>Rover Control System</span>
+    </div>
+
+    <div class="status">
+        <span class="dot"></span> Connected
+    </div>
+</nav>
+
+
+<!-------------- Content ------------------->
+
+    <main class="main-grid">
+
+<!-- LEFT SIDE -->
+
+    <section class="left-section">
+
+        <!-- CAMERA SECTION -->
+        <section class="camera-panel panel">
+
+            <div class="camera-feed">
+
+                <div class="camera-overlay">
+
+                    <div class="telemetry-item">
+                        <span class="label">PITCH</span>
+                        <span class="value">+12.4°</span>
+                    </div>
+
+                    <div class="telemetry-item">
+                        <span class="label">ROLL</span>
+                        <span class="value">-0.8°</span>
+                    </div>
+
+                    <div class="telemetry-item">
+                        <span class="label">YAW</span>
+                        <span class="value">+9.8°</span>
+                    </div>
+
+                </div>
+
+                <div class="rec-indicator">
+                    <span>REC</span>
+                    <div class="rec-dot"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+<!-- CONTROL PANELS -->
+
+<section class="control-panels panel">
+
+    <!-- MANUAL DRIVE -->
+    <section class="manual-drive panel">
+
+        <div class="manual-header">
+            <h2>MANUAL DRIVE</h2>
+        </div>
+
+        <div class="manual-content">
+
+            <!-- Joystick -->
+            <div class="joystick-container">
+
+                <div class="joystick">
+
+                    <button class="arrow up">
+                        <i class="fa-solid fa-chevron-up"></i>
+                    </button>
+
+                    <button class="arrow left">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <div class="center-circle"></div>
+
+                    <button class="arrow right">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                    <button class="arrow down">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Motor Buttons -->
+            <div class="motor-buttons">
+
+                <button class="start-btn">
+                    <i class="fa-regular fa-circle-play"></i>
+                    Start Motors
+                </button>
+
+                <button class="stop-btn">
+                    <i class="fa-regular fa-circle-stop"></i>
+                    Stop Motors
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+ <!-- AI MODELS -->
+    <section class="ai-models panel">
+
+        <div class="ai-header">
+            <h2>AI MODELS</h2>
+        </div>
+
+        <div class="ai-cards">
+
+            <div class="ai-card">
+
+                <div class="ai-icon">
+                    <img src="image/face.png" alt="Face Recognition" class="ai-logo">
+                </div>
+
+                <span>Face Recognition</span>
+
+            </div>
+
+            <div class="ai-card">
+
+                <div class="ai-icon">
+                    <img src="image/object.png" alt="Object Detection" class="ai-logo">
+                </div>
+
+                <span>Object Detection</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+</section>
+
+
+<!-- Right SIDE -->
+
+<aside class="telemetry-panel panel">
+
+    <div class="section-header">
+        <h2>LIVE TELEMETRY</h2>
+    </div>
+
+    <!-- Telemetry Grid -->
+    <div class="telemetry-grid">
+
+        <!-- Temperature -->
+        <div class="telemetry-card">
+
+            <img src="./image/temp.png" alt="temperature" class="telemetry-icon">
+            <h3>TEMPERATURE</h3>
+
+            <p>21°C</p>
+
+        </div>
+
+        <!-- Humidity -->
+        <div class="telemetry-card">
+
+            <img src="./image/humid.png" alt="humidity" class="telemetry-icon">
+
+            <h3>HUMIDITY</h3>
+
+            <p>45%</p>
+
+        </div>
+
+        <!-- CO2 -->
+        <div class="telemetry-card">
+
+            <img src="./image/co2.png" alt="CO2" class="telemetry-icon">
+
+            <h3>PERCENTAGE %</h3>
+
+            <p>0.4%</p>
+
+        </div>
+
+        <!-- Air Quality -->
+        <div class="telemetry-card">
+
+            <img src="./image/air.png" alt="Air Quality" class="telemetry-icon">
+
+            <h3>AIR QUALITY</h3>
+
+            <p>0.4%</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Gyroscope -->
+    <div class="info-box">
+
+        <div class="info-title">
+            <img src="./image/gyro.png" alt="Gyroscope" class="telemetry-icon">
+            <span>GYROSCOPE</span>
+        </div>
+
+        <p>X: 0.1 &nbsp; | &nbsp; Y: 0.5 &nbsp; | &nbsp; Z: 9.8</p>
+
+    </div>
+
+
+    <!-- GPS -->
+    <div class="info-box">
+
+        <div class="info-title">
+            <img src="./image/Gps.png" alt="GPS" class="telemetry-icon">
+            <span>GLOBAL POSITIONING</span>
+        </div>
+
+        <p>40.07° N, 72.6° W</p>
+
+    </div>
+
+
+    <!-- Battery -->
+    <div class="battery-box">
+
+        <div class="battery-header">
+
+            <div class="battery-title">
+                <img src="./image/battery.png" alt="Battery" class="telemetry-icon">
+                <span>BATTERY</span>
+            </div>
+
+            <span class="battery-percent">60%</span>
+
+        </div>
+
+        <div class="battery-bar">
+
+            <div class="battery-fill"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Obstacle Alarm -->
+    <div class="warning-box">
+
+        <div class="warning-header">
+
+            <img src="./image/alarm.png" alt="Warning" class="telemetry-icon">
+
+            <span>OBSTACLE ALARM</span>
+
+        </div>
+
+        <p>PROXIMITY WARNING : 2.4M</p>
+
+        <div class="warning-bars">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+</main>
+
+</div>
+   
+    
+</body>
+</html>
