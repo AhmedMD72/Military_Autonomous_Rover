@@ -1,0 +1,106 @@
+:root {
+    --bg-dark: #0F1717;
+    --accent-teal: #00f2c3;
+    --text-white: #ffffff;
+    --text-gray: #a0a8ab;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.splash-container {
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+}
+
+/* Header  */
+.main-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 10px;
+    margin-bottom: 5px;
+}
+
+.version {
+    color: var(--accent-teal);
+    /* Mimics the slashed zero effect in image_e9d075.png */
+    text-shadow: 0 0 15px rgba(0, 242, 195, 0.4);
+}
+
+.tagline {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-gray);
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+
+.rover-display {
+    margin: 40px 0;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    /* Optional glow to match the line art style */
+    filter: drop-shadow(0 0 10px rgba(0, 242, 195, 0.2));
+}
+
+/* Button Text and Icon Styling */
+.start-btn {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--text-white);
+    border: 1.5px solid var(--accent-teal);
+    
+    width: 450px; 
+    max-width: 100%;
+    
+    font-family: 'Inter', sans-serif;
+    font-weight: 400; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    padding: 12px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.btn-icon {
+    height: 18px; /* Scales with the regular font size */
+    width: auto;
+}
+
+.start-btn:hover {
+    background-color: rgba(0, 242, 195, 0.1);
+    box-shadow: 0 0 15px rgba(0, 242, 195, 0.3);
+}
+
+.hero-image {
+    width: 450px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

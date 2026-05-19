@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Control System</title>
+    <link rel="stylesheet" href="SelectOperationalMode.css">
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="top-nav">
+    <div class="brand">
+        <img src="image/vector.png" alt="Logo" class="brand-logo"> 
+        <span>Rover Control System</span>
+    </div>
+    <div class="status">
+        <span class="dot"></span> Connected
+    </div>
+</header>
+
+    <main class="container">
+    <h1 class="main-title">Select Operational Mode</h1>
+
+    <section class="mode-grid">
+        <!-- Row 1 -->
+        <div class="mode-card" onclick="selectMode(this)" data-target="ManualMode.html">
+            <div class="icon-box"><img src="image/Vector1.png" alt="Manual" class="card-logo"></div>
+            <h3>Manual Mode</h3>
+            <p>Direct, real-time control of rover movement.</p>
+        </div>
+
+        <div class="mode-card" onclick="selectMode(this)" data-target="autonomous.html">
+            <div class="icon-box"><img src="image/Vector2.png" alt="Autonomous" class="card-logo"></div>
+            <h3>Autonomous Mode</h3>
+            <p>Rover operates independently based on pre-defined tasks.</p>
+        </div>
+
+        <div class="mode-card" onclick="selectMode(this)" data-target="navigation.html">
+            <div class="icon-box"><img src="image/Vector3.png" alt="Navigation" class="card-logo"></div>
+            <h3>Navigation</h3>
+            <p>Set and follow GPS waypoints or navigate a map.</p>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="mode-card lower-row" onclick="selectMode(this)" data-target="faceRec.html">
+            <div class="icon-box"><img src="image/Vector4.png" alt="Face" class="card-logo"></div>
+            <h3>Face Recognition</h3>
+            <p>Identify and track recognized human faces.</p>
+        </div>
+
+        <div class="mode-card lower-row" onclick="selectMode(this)" data-target="objDec.html">
+            <div class="icon-box"><img src="image/Vector5.png" alt="Object" class="card-logo"></div>
+            <h3>Object Detection</h3>
+            <p>Engage the vision system to identify and classify objects in real-time.</p>
+        </div>
+    </section>
+</main>
+
+    <script src="SelectOperationalMode.js"></script>
+</body>
+</html>

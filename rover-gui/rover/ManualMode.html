@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Control System</title>
+    <link rel="stylesheet" href="ManualMode.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Onest:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="full-screen-bg">
+        <header class="top-bar header-font">
+            <div class="top-bar-left" onclick="window.location.href='SelectOperationalMode.html'">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span >Back to Mode Selection</span>
+            </div>
+            
+            <div class="brand">
+                <img src="image/vector.png" alt="Logo" class="brand-logo">
+                <span>Rover Control System</span>
+            </div>
+
+            <div class="status">
+                <span class="dot"></span>
+                <span>Connected</span>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <div class="left-column">
+                
+                <div class="camera-section bracket-container">
+                    <div id="camera-stream" class="camera-placeholder"></div>
+                    
+                    <div class="camera-overlay-rec">
+                        <span class="rec-dot"></span> REC
+                    </div>
+                    
+                    <div class="camera-overlay-stats title-font">
+                        <div>PITCH <span class="stat-val">+12.4°</span></div>
+                        <div>ROLL <span class="stat-val">-0.8°</span></div>
+                        <div>YAW <span class="stat-val">+9.8°</span></div>
+                    </div>
+                </div>
+
+                <div class="bottom-controls">
+                    <div class="manual-drive-section bracket-container">
+                        <h3 class="section-title title-font">MANUAL DRIVE</h3>
+                        
+                        <div class="drive-split-layout">
+                            <div class="drive-left">
+                                <div class="d-pad-container">
+                                    <div class="d-pad-inner">
+                                        <div class="d-pad-center"></div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-up d-arrow up"></i>
+                                    <i class="fa-solid fa-chevron-down d-arrow down"></i>
+                                    <i class="fa-solid fa-chevron-left d-arrow left"></i>
+                                    <i class="fa-solid fa-chevron-right d-arrow right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="drive-right">
+                                <button class="btn-motor start-motor btn-font">
+                                    <i class="fa-solid fa-circle-play"></i> START MOTORS
+                                </button>
+                                <button class="btn-motor stop-motor btn-font">
+                                    <i class="fa-solid fa-circle-stop"></i> STOP MOTORS
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-models-section bracket-container">
+                        <div class="ai-header-box">
+                            <h3 class="section-title title-font no-border">AI MODELS</h3>
+                        </div>
+                        <div class="ai-buttons">
+                            <button class="btn-ai btn-font" onclick="window.location.href='faceRec.html'">
+                                <i class="fa-regular fa-user icon-yellow"></i> Face Recognition
+                            </button>
+                            <button class="btn-ai btn-font" onclick="window.location.href='objDec.html'">
+                                <i class="fa-solid fa-expand icon-yellow"></i> Object Detection
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <h2 class="telemetry-title title-font">LIVE TELEMETRY</h2>
+                
+                <div class="sensor-grid">
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-temperature-half icon-teal"></i>
+                        <div class="sensor-label btn-font">TEMPERATURE</div>
+                        <div class="sensor-value btn-font" id="val-temp">21 °C</div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-droplet icon-teal"></i>
+                        <div class="sensor-label btn-font">HUMIDITY</div>
+                        <div class="sensor-value btn-font" id="val-hum">45 %</div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-cloud icon-teal"></i>
+                        <div class="sensor-label btn-font">CO2 PERCENTAGE </div>
+                        <div class="sensor-value btn-font" id="val-co2">0.4 %</div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-wind icon-teal"></i>
+                        <div class="sensor-label btn-font">AIR QUALITY</div>
+                        <div class="sensor-value btn-font" id="val-air">0.4 %</div>
+                    </div>
+                </div>
+
+                <div class="sensor-row">
+                    <div class="row-header btn-font">
+                        <i class="fa-solid fa-compass icon-teal"></i> GYROSCOPE
+                    </div>
+                    <div class="row-data btn-font" id="val-gyro">X: 0.1     |       Y: 0.5       |   Z: 9.8</div>
+                </div>
+
+                <div class="sensor-row">
+                    <div class="row-header btn-font">
+                        <i class="fa-solid fa-location-dot icon-teal"></i> GLOBAL POSITIONING
+                    </div>
+                    <div class="row-data btn-font" id="val-gps">40.07° N, 72.6° W</div>
+                </div>
+
+                <div class="sensor-row">
+                    <div class="row-header flex-between btn-font">
+                        <div><i class="fa-solid fa-battery-three-quarters icon-teal"></i> BATTERY</div>
+                        <div class="batt-text" id="val-batt-txt">60%</div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="val-batt-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+
+                <div class="sensor-row alarm-card">
+                    <div class="row-header alarm-text btn-font">
+                        <i class="fa-solid fa-triangle-exclamation"></i> OBSTACLE ALARM
+                    </div>
+                    <div class="row-data alarm-text btn-font">PROXIMITY WARNING: <span id="val-prox">2.4M</span></div>
+                    <div class="alarm-bars">
+                        <div class="a-bar full"></div>
+                        <div class="a-bar full"></div>
+                        <div class="a-bar empty"></div>
+                        <div class="a-bar empty"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="ManualMode.js"></script>
+</body>
+</html>

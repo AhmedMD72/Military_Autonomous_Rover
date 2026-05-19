@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Control System - Object Detection</title>
+    <link rel="stylesheet" href="objDec.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Onest:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="full-screen-bg">
+        <header class="top-bar header-font">
+            <div class="top-bar-left" onclick="window.location.href='SelectOperationalMode.html'">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Mode Selection</span>
+            </div>
+            
+            <div class="brand">
+                <i class="fa-solid fa-robot icon-teal"></i>
+                <span>Rover Control System</span>
+            </div>
+
+            <div class="status">
+                <span class="dot"></span>
+                <span>Connected</span>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            
+            <div class="left-column">
+                
+                <div class="camera-container">
+                    <div class="bracket top-left"></div>
+                    <div class="bracket top-right"></div>
+                    <div class="bracket bottom-left"></div>
+                    <div class="bracket bottom-right"></div>
+                    
+                    <img id="live-camera-feed" src="" alt="Camera Feed" class="camera-stream-url">
+                    <h1 class="camera-text title-font" id="camera-placeholder-text">Camera Feed</h1>
+                </div>
+
+                <div class="sensor-panel">
+                    <div class="sensor-item border-red item-small">
+                        <div class="sensor-header btn-font">
+                            <i class="fa-solid fa-temperature-half text-red"></i> Temperature
+                        </div>
+                        <div class="sensor-value btn-font" id="val-temp">21°C</div>
+                    </div>
+
+                    <div class="sensor-item border-yellow item-small">
+                        <div class="sensor-header btn-font">
+                            <i class="fa-solid fa-droplet text-yellow"></i> Humidity
+                        </div>
+                        <div class="sensor-value btn-font" id="val-hum">78%</div>
+                    </div>
+
+                    <div class="sensor-item border-blue item-small">
+                        <div class="sensor-header btn-font">
+                            <i class="fa-solid fa-wind text-blue"></i> Air Quality
+                        </div>
+                        <div class="sensor-value btn-font" id="val-air">60%</div>
+                    </div>
+
+                    <div class="sensor-item border-orange item-small">
+                        <div class="sensor-header btn-font">
+                            <i class="fa-solid fa-cloud text-orange"></i> CO2 %
+                        </div>
+                        <div class="sensor-value btn-font" id="val-co2">60%</div>
+                    </div>
+
+                    <div class="sensor-item border-teal item-large">
+                        <div class="sensor-header btn-font">
+                            <i class="fa-solid fa-crosshairs text-teal"></i> GPS Reading
+                        </div>
+                        <div class="sensor-value btn-font" id="val-gps">40.07° N, 72.6° W</div>
+                    </div>
+
+                    <div class="sensor-item border-teal item-large">
+                        <div class="sensor-header btn-font">
+                            <i class="fa-solid fa-compass text-teal"></i> MPU
+                        </div>
+                        <div class="sensor-value btn-font" id="val-mpu">0.1, 0.5, 9.8</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                
+                <div class="side-panel object-det-panel">
+                    <h3 class="panel-title title-font border-bottom-teal detected-title">
+                        Objects Detection
+                    </h3>
+                    
+                    <div class="object-list">
+                        <div class="object-row">
+                            <div class="object-label">
+                                <i class="fa-solid fa-car text-blue"></i>
+                                <span class="btn-font">Cars</span>
+                            </div>
+                            <span class="object-count title-font" id="count-cars">5</span>
+                        </div>
+
+                        <div class="object-row">
+                            <div class="object-label">
+                                <i class="fa-solid fa-mountain text-yellow"></i>
+                                <span class="btn-font">Rocks</span>
+                            </div>
+                            <span class="object-count title-font" id="count-rocks">8</span>
+                        </div>
+
+                        <div class="object-row">
+                            <div class="object-label">
+                                <i class="fa-solid fa-tree text-teal"></i>
+                                <span class="btn-font">Trees</span>
+                            </div>
+                            <span class="object-count title-font" id="count-trees">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-panel controls-panel">
+                    <h3 class="panel-title title-font border-bottom-dim">
+                        Detection control
+                    </h3>
+                    <div class="button-group">
+                        <button class="btn-solid-blue btn-font" id="btn-start-det">
+                            <i class="fa-solid fa-step-forward"></i> Start Detection
+                        </button>
+                        <button class="btn-solid-red btn-font" id="btn-stop-det">
+                            <i class="fa-solid fa-stop-circle"></i> Stop Detection
+                        </button>
+                    </div>
+                </div>
+
+                <div class="side-panel alarm-panel">
+                    <h3 class="panel-title text-yellow btn-font" style="font-weight: 700;">
+                        <i class="fa-solid fa-circle-exclamation"></i> Safety Alarm
+                    </h3>
+                    <p class="alarm-text btn-font" id="val-alarm">
+                        Proximity sensor detects an obstacle 1m ahead.
+                    </p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="objDec.js"></script>
+</body>
+</html>
