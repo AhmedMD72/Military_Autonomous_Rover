@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation Mode</title>
+    <link rel="icon" type="image/svg+xml" href="../Public/favicon.svg" />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Onest:wght@400;600;700&family=Orbitron:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <div class="full-screen-bg">
+      <header class="top-bar header-font">
+        <div
+          class="top-bar-left"
+          onclick="window.location.href = '../SelectOperationalMode/index.html'"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Mode Selection</span>
+        </div>
+
+        <div class="brand">
+          <img
+            src="../Public/Images/Vector.png"
+            alt="Logo"
+            class="brand-logo"
+          />
+          <span>Navigation Mode</span>
+        </div>
+
+        <div class="status">
+          <span class="dot"></span>
+          <span>Connected</span>
+        </div>
+      </header>
+
+      <main class="main-layout">
+        <div class="left-column">
+          <div class="camera-container">
+            <div class="cam-corners">
+              <div class="cam-corner tl"></div>
+              <div class="cam-corner tr"></div>
+              <div class="cam-corner bl"></div>
+              <div class="cam-corner br"></div>
+            </div>
+
+            <img
+              id="live-camera-feed"
+              src=""
+              alt="Camera Feed"
+              class="camera-stream-url"
+            />
+            <p
+              class="camera-placeholder-text title-font"
+              id="camera-placeholder-text"
+            >
+              Camera Feed
+            </p>
+
+            <!-- include these only on screens that need them -->
+            <div class="cam-overlay-rec"><span class="rec-dot"></span> REC</div>
+            <div class="cam-overlay-stats title-font">
+              <div>PITCH <span id="val-pitch">+12.4°</span></div>
+              <div>ROLL <span id="val-roll">-0.8°</span></div>
+              <div>YAW <span id="val-yaw">+9.8°</span></div>
+            </div>
+          </div>
+
+          <div class="sensor-panel">
+            <div class="sensor-item border-red item-small">
+              <div class="sensor-header btn-font">
+                <i class="fa-solid fa-temperature-half text-red"></i>
+                Temperature
+              </div>
+              <div class="sensor-value btn-font" id="val-temp">21°C</div>
+            </div>
+
+            <div class="sensor-item border-yellow item-small">
+              <div class="sensor-header btn-font">
+                <i class="fa-solid fa-droplet text-yellow"></i> Humidity
+              </div>
+              <div class="sensor-value btn-font" id="val-hum">78%</div>
+            </div>
+
+            <div class="sensor-item border-blue item-small">
+              <div class="sensor-header btn-font">
+                <i class="fa-solid fa-wind text-blue"></i> Air Quality
+              </div>
+              <div class="sensor-value btn-font" id="val-air">60%</div>
+            </div>
+
+            <div class="sensor-item border-orange item-small">
+              <div class="sensor-header btn-font">
+                <i class="fa-solid fa-cloud text-orange"></i> CO2 %
+              </div>
+              <div class="sensor-value btn-font" id="val-co2">60%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <!-- Map panel -->
+          <div class="side-panel nav-map-panel">
+            <h3 class="panel-title title-font border-bottom-teal">
+              <i class="fa-solid fa-map icon-teal"></i> Live Map
+            </h3>
+
+            <!-- Leaflet renders here -->
+            <div id="map-frame"></div>
+
+            <!-- Position info — same panel, below the map -->
+            <div class="nav-info-block">
+              <div class="nav-info-row">
+                <span class="nav-info-label btn-font">Current Position</span>
+                <span class="nav-info-value" id="val-current-pos-lat"
+                  >Lat: --</span
+                >
+                <span class="nav-info-value" id="val-current-pos-lon"
+                  >Lon: --</span
+                >
+              </div>
+              <div class="nav-info-row">
+                <span class="nav-info-label btn-font"
+                  >Distance to Destination</span
+                >
+                <span class="nav-info-value" id="val-distance">-- meters</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Destination input panel -->
+          <div class="side-panel nav-dest-panel">
+            <h3 class="panel-title title-font border-bottom-dim">
+              <i class="fa-solid fa-crosshairs icon-teal"></i> Destination
+              Coordinates
+            </h3>
+
+            <div class="nav-input-row">
+              <input
+                type="text"
+                class="nav-coord-input btn-font"
+                id="input-destination"
+                placeholder="35.5, 109.3"
+                autocomplete="off"
+              />
+              <button
+                class="nav-send-btn"
+                id="btn-send-coords"
+                title="Send coordinates"
+              >
+                <i class="fa-solid fa-location-arrow"></i>
+              </button>
+            </div>
+
+            <div class="button-group" style="margin-top: 16px">
+              <button class="btn-go btn-font" id="btn-go-destination">
+                <i class="fa-solid fa-route"></i> Go to Destination
+              </button>
+              <button class="btn-return btn-font" id="btn-return-origin">
+                <i class="fa-solid fa-rotate-left"></i> Return to Origin
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/roslib/build/roslib.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,520 @@
+:root {
+  /* ── COLORS ── */
+  --bg-color: #0f1717;
+  --card-bg: #141d1d;
+  --panel-bg: #131d1c;
+  --accent-teal: #00a890;
+  --accent-green: #15524c;
+  --text-main: #ffffff;
+  --text-dim: #9aa4a6;
+  --border-color: #2c3a3d;
+
+  /* Panel Specific Colors */
+  --color-red: #e53935;
+  --color-yellow: #fbc02d;
+  --color-blue: #0288d1;
+  --color-orange: #f57c00;
+
+  /* Button Colors */
+  --btn-blue-bg: #16435c;
+  --btn-blue-border: #1a5678;
+  --btn-red-bg: #4a1c1c;
+  --btn-red-border: #6b2626;
+
+  /* ── PADDING VARIABLES ── */
+  --padding-page: 20px 24px;
+  --padding-panel: 20px;
+  --padding-card: 30px;
+  --padding-section: 20px;
+  --padding-input: 10px 14px;
+  --padding-btn: 14px 20px;
+  --padding-xs: 4px;
+  --padding-sm: 10px;
+  --padding-md: 16px;
+  --padding-lg: 30px;
+  --padding-xl: 60px;
+
+  --gap-sm: 10px;
+  --gap-md: 16px;
+  --gap-lg: 30px;
+
+}
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── VIEWPORT & BODY ── */
+html {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--padding-page); /* consistent breathing room on all screens */
+  overflow-x: hidden;
+}
+
+/* ── ROOT WRAPPER ── */
+/* Use .full-screen-bg on every page's outermost container */
+.full-screen-bg {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── TYPOGRAPHY ── */
+.header-font {
+  font-family: "Inter", sans-serif;
+}
+.title-font {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+}
+.btn-font {
+  font-family: "Onest", sans-serif;
+}
+
+/* ── nav BAR  ── */
+
+.top-bar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0 0 var(--padding-panel) 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--padding-lg);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+  cursor: pointer;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--padding-sm);
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.brand-logo {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.brand span {
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--text-main);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--padding-sm);
+  color: var(--text-main);
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: var(--accent-teal);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-teal);
+  flex-shrink: 0;
+}
+
+/* ── ICON HELPERS ── */
+.icon-teal {
+  color: var(--accent-teal);
+}
+.icon-yellow {
+  color: var(--color-yellow);
+  font-size: 15px;
+  width: 18px;
+  text-align: center;
+}
+.text-red {
+  color: var(--color-red);
+}
+.text-yellow {
+  color: var(--color-yellow);
+}
+.text-teal {
+  color: var(--accent-teal);
+}
+.text-blue {
+  color: var(--color-blue);
+}
+.text-orange {
+  color: var(--color-orange);
+}
+
+/* ── SHARED PANEL BASE ── */
+.side-panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: var(--padding-panel);
+}
+
+/* Camera-Section */
+.camera-container {
+  position: relative;
+  background-color: #000;
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* Live stream image — hidden until src is set via JS */
+.camera-stream-url {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: none;
+}
+
+/* Placeholder text centred in the black frame */
+.camera-placeholder-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  color: #2a3a3a;
+  letter-spacing: 4px;
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Four teal corner brackets ── */
+.cam-corners {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.cam-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--accent-teal);
+}
+
+.cam-corner.tl {
+  top: 0px;
+  left: 0px;
+  border-right: none;
+  border-bottom: none;
+}
+.cam-corner.tr {
+  top: 0px;
+  right: 0px;
+  border-left: none;
+  border-bottom: none;
+}
+.cam-corner.bl {
+  bottom: 0px;
+  left: 0px;
+  border-right: none;
+  border-top: none;
+}
+.cam-corner.br {
+  bottom: 0px;
+  right: 0px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ── REC indicator (bottom-left) ── */
+.cam-overlay-rec {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ff3333;
+}
+
+.rec-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ff3333;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Pitch / Roll / Yaw stats (right, vertically centred) ── */
+.cam-overlay-stats {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  z-index: 5;
+  text-align: right;
+  font-size: 11px;
+  color: var(--accent-teal);
+  line-height: 2.2;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.cam-overlay-stats span {
+  color: var(--text-main);
+  margin-left: var(--padding-xs);
+}
+
+/* Accent border variants */
+.ai-panel {
+  border-color: rgba(251, 192, 45, 0.45);
+  box-shadow: 0 0 18px rgba(251, 192, 45, 0.04);
+}
+
+/* ── PANEL TITLES ── */
+.panel-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding-bottom: 12px;
+  margin-bottom: var(--padding-panel);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  color: var(--text-main);
+}
+
+.border-bottom-teal {
+  border-bottom: 1px solid var(--accent-green);
+}
+.border-bottom-dim {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ── SECTION TITLE (left-column headings) ── */
+.section-title {
+  font-family: "Orbitron", sans-serif;
+  color: var(--text-main);
+  font-size: 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  letter-spacing: 1.5px;
+}
+
+.section-title:not(.no-border)::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+  margin-left: var(--padding-md);
+}
+
+/* ── SENSOR BORDERS ── */
+.border-red {
+  border-color: rgba(229, 57, 53, 0.4);
+}
+.border-yellow {
+  border-color: rgba(251, 192, 45, 0.4);
+}
+.border-teal {
+  border-color: var(--accent-green);
+}
+.border-blue {
+  border-color: rgba(2, 136, 209, 0.4);
+}
+.border-orange {
+  border-color: rgba(245, 124, 0, 0.4);
+}
+
+/* ── BUTTONS ── */
+.btn-solid-blue,
+.btn-solid-red {
+  width: 100%;
+  padding: var(--padding-btn);
+  border-radius: 6px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--padding-sm);
+  transition: filter 0.2s;
+  border: none;
+}
+
+.btn-solid-blue:hover,
+.btn-solid-red:hover {
+  filter: brightness(1.15);
+}
+
+.btn-solid-blue {
+  background: var(--btn-blue-bg);
+  border: 1px solid var(--btn-blue-border);
+  color: #a8d8f0;
+}
+
+.btn-solid-red {
+  background: var(--btn-red-bg);
+  border: 1px solid var(--btn-red-border);
+  color: #f0a8a8;
+}
+
+.btn-ai {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(251, 192, 45, 0.3);
+  box-shadow:
+    0 0 10px rgba(251, 192, 45, 0.04),
+    inset 0 0 10px rgba(251, 192, 45, 0.03);
+  color: rgba(221, 218, 208, 0.85);
+  padding: var(--padding-md);
+  text-align: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+  transition:
+    background 0.2s,
+    filter 0.2s;
+}
+
+.btn-ai:hover {
+  background-color: rgba(251, 192, 45, 0.07);
+  filter: brightness(1.1);
+}
+
+.btn-outline-teal {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--accent-green);
+  color: var(--text-main);
+  padding: var(--padding-sm);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--padding-sm);
+  font-size: 15px;
+}
+.btn-outline-teal:hover {
+  background-color: var(--accent-green);
+}
+
+/* Button group container */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-sm);
+  align-items: center;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar-container {
+  height: 5px;
+  background-color: #1a2524;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: var(--padding-sm);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--accent-teal);
+  border-radius: 3px;
+}
+
+/* ── ALARM BARS ── */
+.alarm-bars {
+  display: flex;
+  gap: var(--padding-xs);
+  margin-top: var(--padding-sm);
+}
+.a-bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+}
+.a-bar.full {
+  background-color: var(--alarm-color);
+}
+.a-bar.empty {
+  background-color: rgba(255, 180, 171, 0.2);
+}
+
+/* ── UTILITY ── */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================================================
+   RIGHT COLUMN — shared sidebar
+   ============================================================ */
+
+/* Wrapper: stacks panels vertically, fills the grid cell */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+/* ── AI BUTTONS list inside .ai-panel ── */
+.ai-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-sm);
+}
+
+/* ── CONTROL PANEL (Start / Stop buttons) ──
+   Identical across ManualMode, FaceRecognition, ObjectDetection, Mapping */
+.controls-panel .button-group,
+.control-panel .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-sm);
+}
