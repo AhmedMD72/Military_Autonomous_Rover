@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Rover Control System</title>
+
+    <!-- Main Paths -->
+    <link rel="icon" type="image/svg+xml" href="../Public/favicon.svg" />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Onest:wght@400;600&family=Orbitron:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="full-screen-bg">
+
+      <!-- Header -->
+      <header class="top-bar header-font">
+
+        <div
+          class="top-bar-left"
+          onclick="window.location.href='../SelectOperationalMode/index.html'"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Mode Selection</span>
+        </div>
+
+        <div class="brand">
+          <img
+            src="../Public/Images/Vector.png"
+            alt="Logo"
+            class="brand-logo"
+            onerror="this.style.display='none'; document.getElementById('brand-text').style.display='block';"
+          />
+
+          <span id="brand-text" style="display:none;">
+            Rover Control System
+          </span>
+        </div>
+
+        <div class="status">
+          <span class="dot" id="ros-dot"></span>
+          <span id="ros-status">Disconnected</span>
+        </div>
+
+      </header>
+
+      <!-- Main Layout -->
+      <main class="main-layout">
+
+        <!-- Left Column -->
+        <div class="left-column">
+
+          <!-- Camera -->
+          <div class="camera-container">
+
+            <div class="cam-corners">
+              <div class="cam-corner tl"></div>
+              <div class="cam-corner tr"></div>
+              <div class="cam-corner bl"></div>
+              <div class="cam-corner br"></div>
+            </div>
+
+            <!-- Camera Stream -->
+            <div id="camera-stream" class="camera-placeholder"></div>
+
+            <!-- Optional Image Feed -->
+
+
+
+
+            <!-- REC -->
+            <div class="cam-overlay-rec">
+              <span class="rec-dot"></span> REC
+            </div>
+
+            <!-- Stats -->
+            <div class="cam-overlay-stats title-font">
+
+              <div>
+                PITCH
+                <span id="val-pitch" class="stat-val">+12.4°</span>
+              </div>
+
+              <div>
+                ROLL
+                <span id="val-roll" class="stat-val">-0.8°</span>
+              </div>
+
+              <div>
+                YAW
+                <span id="val-yaw" class="stat-val">+9.8°</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Controls -->
+          <div class="bottom-controls">
+
+            <!-- Manual Drive -->
+            <div class="manual-drive-section bracket-container">
+
+              <h3 class="section-title title-font">
+                MANUAL DRIVE
+              </h3>
+
+              <div class="drive-split-layout">
+
+                <div class="drive-left">
+
+                  <div class="d-pad-container">
+
+                    <div class="d-pad-inner">
+                      <div class="d-pad-center"></div>
+                    </div>
+
+                    <i id="arrow-up"
+                       class="fa-solid fa-chevron-up d-arrow up"></i>
+
+                    <i id="arrow-down"
+                       class="fa-solid fa-chevron-down d-arrow down"></i>
+
+                    <i id="arrow-left"
+                       class="fa-solid fa-chevron-left d-arrow left"></i>
+
+                    <i id="arrow-right"
+                       class="fa-solid fa-chevron-right d-arrow right"></i>
+
+                  </div>
+
+                </div>
+
+                <div class="drive-right">
+
+                  <button class="btn-motor start-motor btn-font">
+                    <i class="fa-solid fa-circle-play"></i>
+                    START MOTORS
+                  </button>
+
+                  <button class="btn-motor stop-motor btn-font">
+                    <i class="fa-solid fa-circle-stop"></i>
+                    STOP MOTORS
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- AI Models -->
+            <div class="ai-models-section bracket-container">
+
+              <div class="ai-header-box">
+                <h3 class="section-title title-font no-border">
+                  AI MODELS
+                </h3>
+              </div>
+
+              <div class="ai-buttons">
+
+                <button
+                  class="btn-ai btn-font"
+                  onclick="window.location.href='../FaceRecognition/index.html'"
+                >
+                  <i class="fa-regular fa-user icon-yellow"></i>
+                  Face Recognition
+                </button>
+
+                <button
+                  class="btn-ai btn-font"
+                  onclick="window.location.href='../ObjectDetection/index.html'"
+                >
+                  <i class="fa-solid fa-expand icon-yellow"></i>
+                  Object Detection
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+
+          <h2 class="telemetry-title title-font">
+            LIVE TELEMETRY
+          </h2>
+
+          <!-- Sensor Grid -->
+          <div class="sensor-grid">
+
+            <div class="sensor-card">
+              <i class="fa-solid fa-temperature-half icon-teal"></i>
+
+              <div class="sensor-label btn-font">
+                TEMPERATURE
+              </div>
+
+              <div class="sensor-value btn-font" id="val-temp">
+                21 °C
+              </div>
+            </div>
+
+            <div class="sensor-card">
+              <i class="fa-solid fa-droplet icon-teal"></i>
+
+              <div class="sensor-label btn-font">
+                HUMIDITY
+              </div>
+
+              <div class="sensor-value btn-font" id="val-hum">
+                45 %
+              </div>
+            </div>
+
+            <div class="sensor-card">
+              <i class="fa-solid fa-cloud icon-teal"></i>
+
+              <div class="sensor-label btn-font">
+                CO2 PERCENTAGE
+              </div>
+
+              <div class="sensor-value btn-font" id="val-co2">
+                0.4 %
+              </div>
+            </div>
+
+            <div class="sensor-card">
+              <i class="fa-solid fa-wind icon-teal"></i>
+
+              <div class="sensor-label btn-font">
+                AIR QUALITY
+              </div>
+
+              <div class="sensor-value btn-font" id="val-air">
+                0.4 %
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Gyroscope -->
+          <div class="sensor-row">
+
+            <div class="row-header btn-font">
+              <i class="fa-solid fa-compass icon-teal"></i>
+              GYROSCOPE
+            </div>
+
+            <div class="row-data btn-font" id="val-gyro">
+              GX: 0.1 | GY: 0.5 | GZ: 9.8
+            </div>
+
+          </div>
+
+          <!-- GPS -->
+          <div class="sensor-row">
+
+            <div class="row-header btn-font">
+              <i class="fa-solid fa-location-dot icon-teal"></i>
+              GLOBAL POSITIONING
+            </div>
+
+            <div class="row-data btn-font" id="val-gps">
+              40.07° N, 72.6° E
+            </div>
+
+          </div>
+
+          <!-- Battery -->
+          <div class="sensor-row">
+
+            <div class="row-header flex-between btn-font">
+
+              <div>
+                <i class="fa-solid fa-battery-three-quarters icon-teal"></i>
+                BATTERY
+              </div>
+
+              <div class="batt-text" id="val-batt-txt">
+                60%
+              </div>
+
+            </div>
+
+            <div class="progress-bar-container">
+
+              <div
+                class="progress-bar-fill"
+                id="val-batt-fill"
+                style="width: 60%"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <!-- Alarm -->
+          <div class="sensor-row alarm-card">
+
+            <div class="row-header alarm-text btn-font">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              OBSTACLE ALARM
+            </div>
+
+            <div class="row-data alarm-text btn-font">
+              PROXIMITY WARNING:
+              <span id="val-prox">2.4M</span>
+            </div>
+
+            <div class="alarm-bars">
+              <div class="a-bar full"></div>
+              <div class="a-bar full"></div>
+              <div class="a-bar empty"></div>
+              <div class="a-bar empty"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- ROSLIB -->
+    <script src="https://cdn.jsdelivr.net/npm/roslib/build/roslib.min.js"></script>
+
+    <script src="../config.js"></script>
+    <script src="main.js"></script>
+
+  </body>
+</html>

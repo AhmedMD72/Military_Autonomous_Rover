@@ -1,0 +1,270 @@
+/* Typography Classes */
+.header-font {
+  font-family: "Inter", sans-serif;
+}
+.title-font {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+}
+.btn-font {
+  font-family: "Onest", sans-serif;
+}
+
+/* Main Layout */
+.main-layout {
+  display: grid;
+  grid-template-columns: 2.6fr 0.9fr;
+  gap: var(--gap-lg);
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+.sensor-panel {
+  background-color: #172120;
+  padding: var(--padding-panel);
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Columns */
+  gap: var(--padding-md);
+}
+
+.item-small {
+  grid-column: span 1;
+}
+.item-large {
+  grid-column: span 2;
+}
+
+.sensor-item {
+  background-color: var(--bg-color);
+  padding: var(--padding-md) var(--padding-sm);
+  border-radius: 4px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--padding-sm);
+}
+
+.sensor-header {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+  font-size: 16px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.sensor-value {
+  font-size: 22px;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+/* Custom Sensor Borders & Text Colors */
+.border-red {
+  border-color: rgba(229, 57, 53, 0.4);
+}
+.border-yellow {
+  border-color: rgba(251, 192, 45, 0.4);
+}
+.border-teal {
+  border-color: var(--accent-green);
+}
+.border-blue {
+  border-color: rgba(2, 136, 209, 0.4);
+}
+.border-orange {
+  border-color: rgba(245, 124, 0, 0.4);
+}
+
+.text-red {
+  color: var(--color-red);
+}
+.text-yellow {
+  color: var(--color-yellow);
+}
+.text-teal {
+  color: var(--accent-teal);
+}
+.text-blue {
+  color: var(--color-blue);
+}
+.text-orange {
+  color: var(--color-orange);
+}
+
+/* Map-Panel */
+
+.nav-map-panel {
+  padding: var(--padding-panel) var(--padding-panel) 0 var(--padding-panel);
+  overflow: hidden;
+}
+
+/* Leaflet map container */
+#map-frame {
+  width: 100%;
+  height: 240px;
+  background-color: #0a1412;
+  border-top: 1px solid var(--accent-green);
+  border-bottom: 1px solid var(--accent-green);
+  position: relative;
+  z-index: 0;
+}
+
+.nav-info-block {
+  padding: var(--padding-md) 0;
+}
+
+.nav-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-xs);
+  padding: var(--padding-sm) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-info-row:last-child {
+  border-bottom: none;
+}
+
+.nav-info-label {
+  font-size: 12px;
+  color: var(--accent-teal);
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nav-info-value {
+  font-family: "Onest", sans-serif;
+  font-size: 16px;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ── Destination input panel ── */
+.nav-input-row {
+  display: flex;
+  gap: var(--padding-sm);
+  align-items: center;
+}
+
+.nav-coord-input {
+  flex: 1;
+  background-color: var(--bg-color);
+  border: 1px solid var(--accent-green);
+  border-radius: 4px;
+  color: var(--text-main);
+  padding: var(--padding-input);
+  font-size: 14px;
+  letter-spacing: 1px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: "Onest", sans-serif;
+}
+
+.nav-coord-input::placeholder {
+  color: var(--text-dim);
+}
+.nav-coord-input:focus {
+  border-color: var(--accent-teal);
+}
+
+.nav-send-btn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background-color: var(--accent-green);
+  border: 1px solid var(--accent-teal);
+  border-radius: 4px;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.nav-send-btn:hover {
+  background-color: var(--accent-teal);
+}
+
+/* ── Go / Return buttons ── */
+.btn-go,
+.btn-return {
+  width: 100%;
+  padding: var(--padding-md);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--padding-sm);
+  transition:
+    filter 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+  font-family: "Onest", sans-serif;
+}
+
+.btn-go {
+  background-color: var(--accent-green);
+  border: 1px solid var(--accent-teal);
+  color: var(--text-main);
+}
+
+.btn-go:hover {
+  filter: brightness(1.25);
+}
+
+.btn-return {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-dim);
+}
+
+.btn-return:hover {
+  border-color: var(--accent-green);
+  color: var(--text-main);
+}
+
+/* ── Leaflet overrides — dark theme ── */
+.leaflet-tile-pane {
+  filter: brightness(0.9) saturate(0.8);
+}
+
+.leaflet-control-zoom a {
+  background-color: var(--panel-bg) !important;
+  color: var(--accent-teal) !important;
+  border-color: var(--accent-green) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: var(--accent-green) !important;
+}
+
+.map-tooltip {
+  background: rgba(10, 20, 18, 0.95);
+  border: 1px solid var(--accent-green);
+  color: var(--text-main);
+  font-family: "Onest", sans-serif;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  max-width: 180px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+}

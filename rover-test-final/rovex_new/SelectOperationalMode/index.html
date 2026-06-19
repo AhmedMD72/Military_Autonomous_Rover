@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mode Selection</title>
+    <link rel="icon" type="image/svg+xml" href="../Public/favicon.svg" />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Fonts and Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/your-code.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="brand">
+        <img src="../Public/Images/Vector.png" alt="Logo" class="brand-logo" />
+        <span>Rover Control System</span>
+      </div>
+      <div class="status"><span class="dot"></span> Connected</div>
+    </header>
+
+    <main class="container">
+      <h1 class="main-title">Select Operational Mode</h1>
+
+      <section class="mode-grid">
+        <!-- Row 1 -->
+        <div
+          class="mode-card"
+          onclick="selectMode(this)"
+          data-target="../ManualMode/index.html"
+        >
+          <div class="icon-box">
+            <img
+              src="../Public/Images/Vector1.png"
+              alt="Manual"
+              class="card-logo"
+            />
+          </div>
+          <h3>Manual Mode</h3>
+          <p>Direct, real-time control of rover movement.</p>
+        </div>
+
+        <div
+          class="mode-card"
+          onclick="selectMode(this)"
+          data-target="../Mapping/index.html"
+        >
+          <div class="icon-box">
+            <img
+              src="../Public/Images/Vector2.png"
+              alt="Mapping"
+              class="card-logo"
+            />
+          </div>
+          <h3>Mapping Mode</h3>
+          <p>Rover operates independently based on pre-defined tasks.</p>
+        </div>
+
+        <div
+          class="mode-card"
+          onclick="selectMode(this)"
+          data-target="../NavigationMode/index.html"
+        >
+          <div class="icon-box">
+            <img
+              src="../Public/Images/Vector3.png"
+              alt="Navigation"
+              class="card-logo"
+            />
+          </div>
+          <h3>Navigation</h3>
+          <p>Set and follow GPS waypoints or navigate a map.</p>
+        </div>
+
+        <!-- Row 2 -->
+        <div
+          class="mode-card lower-row"
+          onclick="selectMode(this)"
+          data-target="../FaceRecognition/index.html"
+        >
+          <div class="icon-box">
+            <img
+              src="../Public/Images/Vector4.png"
+              alt="Face"
+              class="card-logo"
+            />
+          </div>
+          <h3>Face Recognition</h3>
+          <p>Identify and track recognized human faces.</p>
+        </div>
+
+        <div
+          class="mode-card lower-row"
+          onclick="selectMode(this)"
+          data-target="../ObjectDetection/index.html"
+        >
+          <div class="icon-box">
+            <img
+              src="../Public/Images/Vector5.png"
+              alt="Object"
+              class="card-logo"
+            />
+          </div>
+          <h3>Object Detection</h3>
+          <p>
+            Engage the vision system to identify and classify objects in
+            real-time.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
+
